@@ -26,7 +26,7 @@ async function main() {
     // Import the main notification logic
     const notifier = require('../scripts/send-slack-notification');
     
-    console.log('🚀 Running Slack Release Notifier (npm package version)');
+    console.log('🚀 Running Slack Release Notifications (npm package version)');
     console.log('Using environment variables for release data...');
     
   } catch (error) {

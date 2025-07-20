@@ -1,10 +1,10 @@
 {
-  "name": "slack-release-notifier",
+  "name": "slack-release-notifications",
   "version": "1.0.0",
   "description": "Automated Slack notifications for GitHub releases",
   "main": "dist/index.js",
   "bin": {
-    "slack-release-notifier": "./bin/slack-release-notifier"
+    "slack-release-notifications": "./bin/slack-release-notifications"
   },
   "scripts": {
     "build": "ncc build src/index.js -o dist --source-map --license licenses.txt",
@@ -15,11 +15,21 @@
   },
   "keywords": [
     "slack",
+    "slack-notifications",
+    "slack-webhook",
+    "slack-alerts",
     "github-actions",
-    "releases",
+    "github-releases",
+    "release-notifications",
+    "release-alerts",
     "notifications",
+    "webhook",
+    "automation",
     "sdk",
-    "github-action"
+    "github-action",
+    "ci-cd",
+    "devops",
+    "team-communication"
   ],
   "author": "SDK Team",
   "license": "MIT",
@@ -28,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/slack-releases"
+    "url": "https://github.com/your-org/slack-release-notifications"
   },
   "dependencies": {
     "@actions/core": "^1.10.1",

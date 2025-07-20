@@ -1,5 +1,5 @@
-name: 'Slack Release Notifier'
-description: 'Send beautiful Slack notifications when GitHub releases are published'
+name: 'Slack Release Notifications'
+description: 'Automated Slack notifications for GitHub releases - perfect for teams and SDK announcements'
 author: 'SDK Team'
 
 branding:

@@ -1,4 +1,4 @@
-# 🚀 Slack Release Notifier
+# 🚀 Slack Release Notifications
 
 Automated Slack notifications for GitHub releases - perfect for SDK teams to announce new releases and remind team members about documentation updates.
 
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Notification
-        uses: your-org/slack-release-notifier@v1
+        uses: your-org/slack-release-notifications@v1
         with:
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
 ```
@@ -65,20 +65,20 @@ Install globally and use in any project:
 
 ```bash
 # Install globally
-npm install -g slack-release-notifier
+npm install -g slack-release-notifications
 
 # Or add to your project
-npm install --save-dev slack-release-notifier
+npm install --save-dev slack-release-notifications
 ```
 
 Then use in your GitHub Actions:
 
 ```yaml
 - name: Install notifier
-  run: npm install -g slack-release-notifier
+  run: npm install -g slack-release-notifications
   
 - name: Send notification
-  run: slack-release-notifier
+  run: slack-release-notifications
   env:
     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 ```
@@ -147,8 +147,8 @@ npm run test-webhook YOUR_WEBHOOK_URL
 
 **Advanced Example:**
 ```yaml
-- name: Send Slack Notification
-  uses: your-org/slack-release-notifier@v1
+  - name: Send Slack Notification
+    uses: your-org/slack-release-notifications@v1
   with:
     slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
     channel: '#releases'
@@ -252,7 +252,7 @@ jobs:
   notify-slack:
     runs-on: ubuntu-latest
     steps:
-      - uses: your-org/slack-release-notifier@v1
+             - uses: your-org/slack-release-notifications@v1
         with:
           slack-webhook-url: \${{ secrets.SLACK_WEBHOOK_URL }}
 EOF
