@@ -1,0 +1,39 @@
+name: 'Slack Release Notifier'
+description: 'Send beautiful Slack notifications when GitHub releases are published'
+author: 'SDK Team'
+
+branding:
+  icon: 'bell'
+  color: 'green'
+
+inputs:
+  slack-webhook-url:
+    description: 'Slack webhook URL for sending notifications'
+    required: true
+  channel:
+    description: 'Slack channel to post to (optional, overrides webhook default)'
+    required: false
+  mentions:
+    description: 'Comma-separated list of Slack user IDs to mention'
+    required: false
+  notify-on-drafts:
+    description: 'Send notifications for draft releases (default: false)'
+    required: false
+    default: 'false'
+  action-items:
+    description: 'Comma-separated list of action items to include'
+    required: false
+    default: 'Update documentation,Announce to stakeholders,Test integration'
+  custom-message:
+    description: 'Custom message template (optional)'
+    required: false
+
+outputs:
+  message-sent:
+    description: 'Whether the message was sent successfully'
+  slack-response:
+    description: 'Response from Slack API'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js' 

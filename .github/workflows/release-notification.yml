@@ -1,0 +1,38 @@
+name: Release Slack Notification
+
+on:
+  release:
+    types: [published, created]
+
+env:
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Send Slack notification
+      run: node scripts/send-slack-notification.js
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        RELEASE_TAG: ${{ github.event.release.tag_name }}
+        RELEASE_NAME: ${{ github.event.release.name }}
+        RELEASE_BODY: ${{ github.event.release.body }}
+        RELEASE_URL: ${{ github.event.release.html_url }}
+        REPOSITORY_NAME: ${{ github.repository }}
+        REPOSITORY_URL: ${{ github.event.repository.html_url }}
+        RELEASE_AUTHOR: ${{ github.event.release.author.login }}
+        IS_PRERELEASE: ${{ github.event.release.prerelease }}
+        IS_DRAFT: ${{ github.event.release.draft }} 

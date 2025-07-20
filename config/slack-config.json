@@ -1,0 +1,18 @@
+{
+  "channel": "#releases",
+  "mentions": [
+    "U1234567890",
+    "U0987654321"
+  ],
+  "notifyOnDrafts": false,
+  "customMessage": {
+    "enabled": false,
+    "template": "Custom release message template"
+  },
+  "actionItems": [
+    "Update documentation",
+    "Announce to stakeholders", 
+    "Test integration",
+    "Update changelog"
+  ]
+} 

@@ -1,0 +1,31 @@
+{
+  "_comment": "Configuration for Slack release notifications",
+  "_instructions": "1. Copy this file to slack-config.json 2. Update values below 3. Add SLACK_WEBHOOK_URL to GitHub secrets",
+  
+  "channel": "#releases",
+  "_channel_note": "Optional: Slack channel to post to (overrides webhook default)",
+  
+  "mentions": [
+    "U1234567890",
+    "U0987654321"
+  ],
+  "_mentions_note": "Optional: Array of Slack user IDs to mention in notifications",
+  
+  "notifyOnDrafts": false,
+  "_notifyOnDrafts_note": "Set to true to send notifications for draft releases",
+  
+  "customMessage": {
+    "enabled": false,
+    "template": "🎉 New {RELEASE_TYPE} for {REPO_NAME}: {RELEASE_TAG}"
+  },
+  "_customMessage_note": "Optional: Override default message format. Available variables: {RELEASE_TAG}, {REPO_NAME}, {RELEASE_TYPE}, {AUTHOR}",
+  
+  "actionItems": [
+    "Update documentation",
+    "Announce to stakeholders", 
+    "Test integration",
+    "Update changelog",
+    "Notify customer support"
+  ],
+  "_actionItems_note": "Customize the action items reminder list"
+} 

@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+
+// CLI version of the notification script
+async function main() {
+  try {
+    // Load config from current directory or package directory
+    const configPaths = [
+      path.join(process.cwd(), 'slack-config.json'),
+      path.join(process.cwd(), 'config', 'slack-config.json'),
+      path.join(__dirname, '..', 'config', 'slack-config.json')
+    ];
+    
+    let config = {};
+    for (const configPath of configPaths) {
+      if (fs.existsSync(configPath)) {
+        config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+        console.log(`📝 Loaded config from ${configPath}`);
+        break;
+      }
+    }
+
+    // Import the main notification logic
+    const notifier = require('../scripts/send-slack-notification');
+    
+    console.log('🚀 Running Slack Release Notifier (npm package version)');
+    console.log('Using environment variables for release data...');
+    
+  } catch (error) {
+    console.error('❌ Error:', error.message);
+    console.log('\n📋 Setup Instructions:');
+    console.log('1. Set SLACK_WEBHOOK_URL environment variable');
+    console.log('2. Ensure your GitHub Actions workflow sets the required environment variables');
+    console.log('3. Optional: Create slack-config.json for additional configuration');
+    process.exit(1);
+  }
+}
+
+main(); 
